@@ -15,7 +15,7 @@ const ProductsProvider = ({children}) => {
             const data = await response.json();
             setProducts(data.products);
           } catch (error) {
-            console.log('an error error was occured');
+            console.log('an error was occured');
           }
         };
       

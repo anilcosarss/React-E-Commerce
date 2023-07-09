@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import { AiFillHeart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { FavoritesContext } from '../contexts/FavoritesContext';
+import { CartContext } from '../contexts/CartContext';
 
 
 
 const Product = ({ product }) => {
     const { id, title, description, price, images } = product;
     const {favoritesToggle,favorites} = useContext(FavoritesContext);
+    const {addToCart} = useContext(CartContext);
 
     
 
@@ -38,7 +40,7 @@ const Product = ({ product }) => {
             <div className='mt-auto' >
                 <div className='flex items-center gap-5 pb-2'>
                     <div className='text-sky-500 text-2xl font-medium italic'>{price} $</div>
-                    <button className='dark:text-black border-2 border-slate-900 rounded-xl bg-gray-100 py-2 px-3 font-medium'>Add To Basket</button>
+                    <button onClick={() => addToCart(product)}  className='dark:text-black border-2 border-slate-900 rounded-xl bg-gray-100 py-2 px-3 font-medium'>Add To Basket</button>
                 </div>
                 <Link to={`/product/${id}`} className='text-sky-500 font-medium'>Click to see details..</Link>
             </div>
