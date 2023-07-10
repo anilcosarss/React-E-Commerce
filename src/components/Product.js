@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AiFillHeart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { FavoritesContext } from '../contexts/FavoritesContext';
@@ -10,8 +10,6 @@ const Product = ({ product }) => {
     const { id, title, description, price, images } = product;
     const {favoritesToggle,favorites} = useContext(FavoritesContext);
     const {addToCart} = useContext(CartContext);
-
-    
 
 
     // to obtain responsive img format
@@ -27,7 +25,7 @@ const Product = ({ product }) => {
 
             <div className='flex flex-col  gap-3 border-b border-slate-400 dark:border-slate-100 pb-4 mb-2'>
                 <button onClick={() => favoritesToggle(product)} className='absolute top-6  right-0 group-hover:right-5  p-2 flex flex-col items-center justify-center
-      gap-y-2 opacity-0 group-hover:opacity-100 transition-all rounded-full bg-sky-400'><AiFillHeart color={favorites.includes(product) ? "red" : "white"} size={28}/></button>                
+      gap-y-2 opacity-0 group-hover:opacity-100 transition-all rounded-full bg-sky-400'><AiFillHeart color={favorites.find((item) => item.id === product.id) ? "red" : "white"} size={28}/></button>                
             
                 <div className='px-5'>
                 <img alt='_' className='w-[100%] h-[250px] rounded-xl' src={currentImg} />
@@ -40,9 +38,9 @@ const Product = ({ product }) => {
             <div className='mt-auto' >
                 <div className='flex items-center gap-5 pb-2'>
                     <div className='text-sky-500 text-2xl font-medium italic'>{price} $</div>
-                    <button onClick={() => addToCart(product)}  className='dark:text-black border-2 border-slate-900 rounded-xl bg-gray-100 py-2 px-3 font-medium'>Add To Basket</button>
+                    <button onClick={() => addToCart(product)}  className='hover:bg-slate-300 dark:hover:bg-slate-700 transition-all dark:text-black border-2 dark:border-slate-300 dark:bg-slate-800 dark:text-slate-300  border-slate-900 rounded-xl bg-gray-100 py-2 px-3 font-medium'>Add To Basket</button>
                 </div>
-                <Link to={`/product/${id}`} className='text-sky-500 font-medium'>Click to see details..</Link>
+                <Link to={`/product/${id}`} className='text-sky-500 font-medium'> &rarr; Click to see details</Link>
             </div>
 
 
