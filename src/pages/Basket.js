@@ -12,7 +12,7 @@ const Basket = () => {
     <>
 
       <div className='py-16 px-8 '>{cart.length !== 0 ?
-        <div className='flex xl:flex-row flex-col justify-evenly '>
+        <div className='flex xl:flex-row gap-5 flex-col justify-evenly '>
 
           <div className='flex flex-col gap-8'>
             <Modal />
