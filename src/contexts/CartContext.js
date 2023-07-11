@@ -7,6 +7,8 @@ const CartProvider = ({ children }) => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [modal, setModal] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState({});
+    const [quantity, setQuantity] = useState(0);
+
 
 
 
@@ -14,7 +16,34 @@ const CartProvider = ({ children }) => {
         setModal(false);
     };
 
+    // Add to Cart with quantity 
 
+    const addFromDetails = (product) => {
+        if (quantity !== 0) {
+            // For new item
+            const newItem = { ...product, amount: quantity }
+
+            // If item already is in the cart   
+            const cartItem = cart.find((item) => item.id === product.id)
+
+            // add item which already in the cart 
+            if (cartItem) {
+                const newCart = [...cart].map((item) => {
+                    if (item.id === product.id) {
+                        return { ...item, amount: cartItem.amount + quantity }
+                    } else {
+                        return item;
+                    }
+
+                });
+                setCart(newCart);
+            } else {
+                setCart([...cart, newItem])
+            }
+            setQuantity(0)
+        }
+
+    };
 
     // Add To Cart
     const addToCart = (product) => {
@@ -43,32 +72,32 @@ const CartProvider = ({ children }) => {
     // Decrease Amount 
 
     const decreaseAmount = (product) => {
-        const cartItem = cart.find((item) =>{
-           return item.id === product.id;
+        const cartItem = cart.find((item) => {
+            return item.id === product.id;
         });
-        if(cartItem){
+        if (cartItem) {
             const newCart = cart.map((item) => {
-                if(item.id ===product.id &&cartItem.amount > 1){
-                    return{...item , amount: cartItem.amount - 1}
+                if (item.id === product.id && cartItem.amount > 1) {
+                    return { ...item, amount: cartItem.amount - 1 }
                 } else {
                     return item;
-                } 
+                }
             });
             setCart(newCart);
         };
-        if(cartItem.amount < 2) {
+        if (cartItem.amount < 2) {
             setModal(true)
-            setSelectedProduct(product);   
-         }
+            setSelectedProduct(product);
+        }
     }
 
-     // Remove Item
-     const removeItem = (product) => {
+    // Remove Item
+    const removeItem = (product) => {
         setModal(true);
-        setSelectedProduct(product);   
+        setSelectedProduct(product);
     }
 
-    
+
     // Items will be removed after confirm from modal
     const removeModel = (product) => {
         const newCart = cart.filter((item) => item.id !== product.id)
@@ -76,7 +105,7 @@ const CartProvider = ({ children }) => {
         setModal(false);
 
     }
-   
+
     // Clear all basket
 
     const clearBasket = () => {
@@ -92,7 +121,7 @@ const CartProvider = ({ children }) => {
         })
         const last = total.reduce((acc, curr) => {
             return acc + curr;
-        },0)
+        }, 0)
         setTotalPrice(last)
 
     }, [cart])
@@ -101,7 +130,7 @@ const CartProvider = ({ children }) => {
 
 
 
-    return <CartContext.Provider value={{ addToCart,decreaseAmount,selectedProduct,removeModel,closeModel,modal ,cart, clearBasket, removeItem,totalPrice }}>{children}</CartContext.Provider>
+    return <CartContext.Provider value={{ addFromDetails, setQuantity, quantity, addToCart, decreaseAmount, selectedProduct, removeModel, closeModel, modal, cart, clearBasket, removeItem, totalPrice }}>{children}</CartContext.Provider>
 
 
 }
