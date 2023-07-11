@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { AiFillHeart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { FavoritesContext } from '../contexts/FavoritesContext';

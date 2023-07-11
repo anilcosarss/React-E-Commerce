@@ -8,6 +8,7 @@ const CartProvider = ({ children }) => {
     const [modal, setModal] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState({});
     const [quantity, setQuantity] = useState(0);
+    
 
 
 

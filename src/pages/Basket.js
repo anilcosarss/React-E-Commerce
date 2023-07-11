@@ -21,7 +21,7 @@ const Basket = () => {
                 <div key={item.id}>
                   <div className='dark:bg-slate-800  rounded-xl bg-gray-200 dark:text-slate-300 flex flex-col lg:flex-row border border-4 items-center lg:px-8 lg:h-[320px]'>
                     <div className='p-4'>
-                      <img className='rounded-xl w-[250px] h-[250px] ' src={item.images[0]} />
+                      <img alt='_' className='rounded-xl w-[250px] h-[250px] ' src={item.images[0]} />
 
                     </div>
                     <div className='ps-8'>

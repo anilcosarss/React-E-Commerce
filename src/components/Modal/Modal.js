@@ -31,7 +31,7 @@ const Modal = () => {
             <div className="dark:bg-slate-800  dark:text-slate-300 px-8 py-8 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 leading-5 bg-gray-100 p-5 rounded-md w-[80%] lg:max-w-[600px] min-w-[300px]">
               <h2 className='lg:text-2xl xl:text-3xl font-bold mb-5'>Are you sure to delete this item ?</h2>
               <div className='flex flex-col lg:flex-row items-center gap-3 py-5 px-3 my-8 border border-2 border-slate-400 rounded-xl'>
-                <img className='w-[200px] h-[150px]' src={selectedProduct && selectedProduct.images[0]}/>
+                <img alt='_' className='w-[200px] h-[150px]' src={selectedProduct && selectedProduct.images[0]}/>
                 <div>
                   <h3 className='text-xl lg:text-2xl font-medium'>{selectedProduct.title}</h3>
                 <p className='text-md lg:text-lg '>
