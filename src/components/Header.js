@@ -32,7 +32,7 @@ const Header = () => {
                 <div className='cursor-pointer flex justify-center items-center gap-5 text-2xl'>
                     <button onClick={themeToggle} className='flex items-center border-2 border-slate-900  rounded-xl bg-gray-100 gap-1 py-2 px-3'>{theme === "light" ? <BsFillMoonFill size={28} /> : <MdSunny size={28} />}<span className='font-medium hidden md:block'>{theme === "dark" ? "Light Mode" : "Dark Mode"}</span></button>
                     <Link to="/favorites">
-                        <div className={`flex items-center relative border-4 border-slate-900 rounded-xl bg-gray-100 gap-1 transition-all py-2 px-3 ${location.pathname === '/favorites' ? 'border-sky-400' : 'border-slate-300'}`}>
+                        <div className={`flex items-center relative border-4 rounded-xl bg-gray-100 gap-1 transition-all py-2 px-3 ${location.pathname === '/favorites' ? 'border-sky-400' : 'border-slate-300'}`}>
                             <AiFillHeart size={28} />
                             <span className='absolute text-[20px] py-1 px-2 font-medium bg-sky-400 rounded-xl top-[-10px] left-[-15px]'>{favorites.length}</span>
                             <span className='font-medium hidden md:block'>Favoriler</span>
