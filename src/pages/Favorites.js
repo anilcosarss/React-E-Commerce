@@ -58,4 +58,4 @@ gap-y-2 opacity-0 group-hover:opacity-100 transition-all  rounded-full bg-sky-40
   )
 }
 
-export default Favorites
+export default Favorites;
